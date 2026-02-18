@@ -1,0 +1,72 @@
+[
+  {
+    "id": "ventus_black_6x",
+    "name": "Fujikura Ventus Black 6X",
+    "brand": "Fujikura",
+    "weight": 65,
+    "flex": "X",
+    "torque": 3.1,
+    "launch": "low",
+    "spin": "low",
+    "profile": "tip_stiff",
+    "speedMin": 105,
+    "speedMax": 125,
+    "tempoFit": "aggressive"
+  },
+  {
+    "id": "ventus_blue_6s",
+    "name": "Fujikura Ventus Blue 6S",
+    "brand": "Fujikura",
+    "weight": 65,
+    "flex": "S",
+    "torque": 3.8,
+    "launch": "mid",
+    "spin": "mid",
+    "profile": "balanced",
+    "speedMin": 95,
+    "speedMax": 110,
+    "tempoFit": "moderate"
+  },
+  {
+    "id": "tensei_1k_black_65x",
+    "name": "Mitsubishi Tensei 1K Black 65X",
+    "brand": "Mitsubishi",
+    "weight": 67,
+    "flex": "X",
+    "torque": 3.3,
+    "launch": "low",
+    "spin": "low",
+    "profile": "tip_stiff",
+    "speedMin": 102,
+    "speedMax": 120,
+    "tempoFit": "aggressive"
+  },
+  {
+    "id": "hzrdus_black_6_5",
+    "name": "Project X HZRDUS Black 6.5",
+    "brand": "Project X",
+    "weight": 65,
+    "flex": "TX",
+    "torque": 2.9,
+    "launch": "low",
+    "spin": "low",
+    "profile": "very_tip_stiff",
+    "speedMin": 108,
+    "speedMax": 125,
+    "tempoFit": "aggressive"
+  },
+  {
+    "id": "ventus_red_5s",
+    "name": "Fujikura Ventus Red 5S",
+    "brand": "Fujikura",
+    "weight": 58,
+    "flex": "S",
+    "torque": 4.1,
+    "launch": "high",
+    "spin": "mid_high",
+    "profile": "mid_soft",
+    "speedMin": 85,
+    "speedMax": 100,
+    "tempoFit": "smooth"
+  }
+]
