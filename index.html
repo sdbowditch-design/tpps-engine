@@ -312,7 +312,55 @@
         miss: el("miss").value,
         tempo: el("tempo").value,
         notes: el("notes").value || ""
-      };
+      };function render(scored, conf){
+  const box = el("ranking");
+  box.innerHTML = "";
+
+  // ✅ ADD THIS BLOCK
+  const inputs = getInputs();
+  const tier = speedTier(inputs.clubSpeed);
+  const window = targetWindow(inputs.clubSpeed);
+
+  const profileBox = document.createElement("div");
+  profileBox.className = "card";
+  profileBox.innerHTML = `
+    <div class="top">
+      <div class="name">Player Profile</div>
+      <div class="score">${tier.toUpperCase()}</div>
+    </div>
+    <div class="why">
+      Target Launch: ${window.launchMin}° – ${window.launchMax}° |
+      Target Spin: ${window.spinMin} – ${window.spinMax} rpm
+    </div>
+  `;
+  box.appendChild(profileBox);
+
+  // ✅ ADD THIS BLOCK (head trait suggestion)
+  let headAdvice = "";
+  if(inputs.spin !== null){
+    if(inputs.spin > window.spinMax) headAdvice = "Lower-spin head / forward CG / consider lower loft sleeve.";
+    else if(inputs.spin < window.spinMin) headAdvice = "Higher-spin head / rear CG / consider more loft.";
+    else headAdvice = "Spin window acceptable — choose head by dispersion/feel.";
+  } else {
+    headAdvice = "Spin unknown — head recommendation limited (enter spin for better result).";
+  }
+
+  const headBox = document.createElement("div");
+  headBox.className = "card";
+  headBox.innerHTML = `
+    <div class="top">
+      <div class="name">Head Recommendation</div>
+      <div class="score">TRAIT</div>
+    </div>
+    <div class="why">${headAdvice}</div>
+  `;
+  box.appendChild(headBox);
+
+  // existing shaft cards
+  scored.slice(0,3).forEach((r, i) => {
+    ...
+  });
+}
     }
 
     function render(scored, conf){
@@ -377,6 +425,30 @@
       }
     }
     init();
+    function speedTier(speed){
+  if (speed === null) return "unknown";
+  if (speed < 90) return "slow";
+  if (speed < 102) return "moderate";
+  if (speed < 112) return "fast";
+  return "elite";
+}
+
+function targetWindow(speed){
+  const tier = speedTier(speed);
+
+  switch(tier){
+    case "slow":
+      return { launchMin: 14, launchMax: 18, spinMin: 2400, spinMax: 3200 };
+    case "moderate":
+      return { launchMin: 13, launchMax: 16, spinMin: 2200, spinMax: 2800 };
+    case "fast":
+      return { launchMin: 12, launchMax: 15, spinMin: 2000, spinMax: 2600 };
+    case "elite":
+      return { launchMin: 10.5, launchMax: 14, spinMin: 1800, spinMax: 2400 };
+    default:
+      return { launchMin: 12, launchMax: 15, spinMin: 2000, spinMax: 2600 };
+  }
+}
   </script>
 </body>
 </html>
